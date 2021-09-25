@@ -1,0 +1,154 @@
+body{
+   
+    overflow-x: hidden;
+    background:whitesmoke ;
+    
+}
+/* @media(max-width:600px){
+    body{
+        overflow-x:hidden;
+    }
+} */
+input{
+    float: right;
+    clear: both;
+    background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 160px;
+    color: black;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+select{
+    width: 18%;
+    background-color: transparent;
+    border: 0px solid;
+}
+select:focus{
+    outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.compunding-intrest select{
+    float: right;
+    margin-right: -5%;
+    width: auto;
+    background-color: transparent;
+    border: 0px solid;
+}
+.visualization_type select{
+    float: right;
+    margin-right: -5%;
+    width: auto;
+    background-color: transparent;
+    border: 0px solid;
+}
+@media(max-width:600px){
+    .text-center{
+        margin-left: 40%;
+    }
+}
+table{
+    width: 100% !important;
+  
+}
+
+.initial .card{
+    margin-left: 15%;
+}
+.additional_deposit{
+    margin-left: 12%;
+}
+.result{
+    margin-left: 18%;
+}
+.resultant_table{
+    margin-left:15%;
+
+}
+.visualization{
+    margin-left: 24%;
+}
+@media(max-width:976px){
+    .result{
+        margin-left: 12%;
+    }
+    .visualization{
+        margin-left: 11%;
+    }
+   
+
+}
+@media(max-width:600px){
+    .initial .card{
+        /* margin-left: 0; */
+}
+}
+
+.additional_deposit .card{
+    /* margin-left: 20.5%; */
+    width: 30rem;
+
+}
+
+@media(max-width:600px){
+    .additional_deposit .card{
+        width: 30.5rem;
+        /* margin-left:-7%; */
+}
+}
+.btn-center{
+    margin-left: 46%;
+}
+@media(max-width:600px){
+    .btn-center{
+        /* margin-left: 40%; */
+
+    }
+}
+
+@media(max-width:600px){
+    .result .card{
+        /* margin-left: -5%; */
+    }
+}
+
+.resultant_table .card{
+    /* margin-left: 22%; */
+}
+@media(max-width:600px){
+    .resultant_table .card{
+        margin-left:0;
+    }
+
+}
+@media(max-width:600px){
+    .visualization .card{
+        /* margin-left: -5%; */
+    }
+}
+.res_mob{
+    display:none ;
+}
+.res_mob_month{
+    display: none;
+}
+@media(max-width:600px){
+    .res{
+        display: none;
+    }
+    .res_mob{
+        display: block;
+    }
+}
+@media(max-width:600px){
+    
+    .res_mob_month{
+        display: block;
+    }
+}

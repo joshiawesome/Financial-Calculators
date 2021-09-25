@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="../assets/Visualization/Bar_Chart/Bar.css">
+    <link rel="stylesheet" href="../assets/Visualization/Pie_Chart/Pie.css">
+    <link rel="stylesheet" href="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.css">
+    <link rel="stylesheet" href="../assets/Visualization/Line_Chart/Line.css">
+    <link rel="stylesheet" href="../assets/css/sharebuttons.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+    <button onclick="location.href='../'" class="btn btn-info" style="position: fixed;right:0px">Back To Calculators</button>
+    <h2 style="background-color: #FA8231;padding:5px;color:white;">Compound Interest Calculator</h2>
+  <div class="row">
+  
+    <div class="col-xd-4">
+        <div class="initial">
+            <div class="conatiner">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body">
+                       <div class="row">
+                           <div class="col">
+                               <p>Initial Balance</p>
+                           </div>
+                           <div class="col">
+                            <input type="number" value="1000" style="direction:RTL;" id="inital-balance">
+                           </div>
+                           <span style="margin-right: 5%;">$</span>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col">
+                                <p>Intrest Rate</p>
+                            </div>
+                            <div class="col">
+                             <input type="number" value="8" style="direction:RTL;" id="intrest">
+                            </div>
+                            <span style="margin-right: 5%;">%</span>
+                         </div>
+                         <hr>
+                         <div class="row">
+                            <div class="col">
+                                <p>Term</p>
+                            </div>
+                            <div class="col-sm-8 res" id="year">
+                                <input type="number" value="20" style="direction:RTL;" id="term_year" style="float: right;" >   
+                            </div>
+                            <div class="col res_mob" id="year_res" style="margin-left: 50%;">
+                                <input type="number" value="20" style="direction:RTL;" id="term_year_res" style="float: right;" >   
+                            </div>
+                            <div class="col-sm-8 res_month" style="display: none;" id="mon">
+                                <input type="number" value="240" style="direction:RTL;" id="term_month" style="float: right;">
+                            </div>
+                            <div class="col res_mob_month" style="display: none;margin-left: 50%;" id="mon_res">
+                                <input type="number" value="240" style="direction:RTL;" id="term_month_res" style="float: right;">
+                            </div>
+                            <div class="col">
+                                <select id="term_year_month" style="float: right;width: auto;" onchange="mon_year()">
+                                    <option value="year">Years</option>
+                                    <option value="month">Months</option>
+                                    <!-- <option value="monthYear">Mon/Yrs</option> -->
+                                    
+                                  </select>           
+                            </div>
+                         </div>
+                         <hr>
+                         <div class="row compunding-intrest">
+                            <div class="col">
+                                <p>Compounding frequency</p>
+                            </div>
+                            <div class="col">
+                                <select id="Compounding-frequency" style="margin-right: 3%;">
+                                    <option value="yearly">yearly(1/Yr)</option>
+                                    <option value="semi-annualy">semi-annualy(2/Yr)</option>
+                                    <option value="quarterly">quarterly(4/Yr)</option>
+                                    <option value="bi-monthly">bi-monthly(6/Yr)</option>
+                                    <option value="monthly">monthly(12/Yr)</option>
+                                    
+                                    <option value="bi-weekly">bi-weekly(26/Yr)</option>
+                                    
+                                    <option value="weekly">weekly(52/Yr)</option>
+                                    
+                                    <option value="daily">daily(360/Yr)</option>
+                                    <option value="daily_F">daily(365/Yr)</option>
+                                    
+                                  </select>       
+    
+                            </div>
+                           
+                                
+                         </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    <div class="additional_deposit">
+        <div class="container">
+            <div class="card" style="width:30rem;margin-top: 25px;">
+                <div class="card-header">
+                    <p>Additional Deposit</p>
+                </div>
+                <div class="card-body">
+                    <div style="display: none;" id="display_additional_deposit">
+    
+                        <div class="row" >
+                            <div class="col">
+                                <p>How much ?</p>
+                            </div>
+                            <div class="col">
+                                <input type="number" value="50" style="direction:RTL;" id="additional_deposi_input">
+                            </div>
+                            <span style="margin-right: 5%;">$</span>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>How Often ?</p>
+                        </div>
+                        <div class="col"> 
+    
+                            <select style="width: auto;float: right;" id="additional_deposit" onchange="additional_Deposit()">
+                                <option value="never">Never</option>
+                                <option value="a_yearly">Yearly</option>
+                                <option value="a_semi-annualy">semi-annualy</option>
+                                <option value="a_quarterly">quarterly</option>
+                                <option value="a_monthly">monthly</option>
+                                <option value="a_bi-weekly">bi-weekly(26/Yr)</option>
+                                <option value="a_weekly">weekly(52/Yr)</option>
+                                <option value="a_daily_F">daily(365/Yr)</option> 
+                              </select>   
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <div style="display: none;" id="display_additional_deposit_when">
+                        <div class="row">
+                            <div class="col">
+                                When ?
+                            </div>
+                            <div class="col">
+                                <select style="width: auto;float: right;">
+                                    <option value="begining_of_period">begining of period</option>
+                                    <option value="end_of_period">end of period</option> 
+                                  </select>   
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div id="annual_growth_rate" style="display: none;">
+                        <div class="row">
+                            <div class="col">
+                                <p>Annual growth rate</p>
+                            </div>
+                            <div class="col">
+                                    <input type="number" value="0" style="direction:RTL;" id="annual_rate">
+                            </div>
+                            <span style="margin-right: 5%;">%</span>
+                        </div>
+    
+                    </div>
+                  
+                    
+                </div>
+            </div>
+            <a href="#" class="btn" style="background-color: #FA8231;color: white;margin-left: 150px;" onclick="calc()">Calculate</a>
+        </div>
+        <!-- <div class="btn-center"> -->
+            <!-- </div> -->
+    
+    </div>
+    </div>
+      <div class="col-xd-4">
+        <div class="hello">
+            <div class="container" style="margin-top: 2px; margin-right: -100px;" >
+                <div class="card"  style="width: 30rem;display:block;" id="show_description" >
+                    <div class="card-header">
+                        How it works?
+                    </div>
+                    <div class="card-body">
+                        <div class="description_display" id="description_display">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xd-4">
+        <div class="result" id="result" style="display: none;">
+                <div class="container">
+                    <div class="card" style="width: 30rem">
+                        <div class="card-header">
+                            <p>Results</p>
+                        </div>
+                        <div class="card-body">
+                            <p>The <strong>final Balance is $<span id="final_balance"></span></strong></p>
+                            <p>The <strong>total compound interest is $<span id="compond_intrest"></span></strong></p>
+                            <div style="display: none;" id="additional">
+                                <p>The compound interest on initial balance is <strong> $<span id="cioib"></span></strong></p>
+                                <!-- <p>The compound interest on additional deposits is <strong> $<span id="cioyd"></span></strong></p> -->
+                                <p>The final balance of initial money is<strong>$ <span id="fbim"></span></strong></p>
+                                <p>The final balance of additional deposit is <strong>$ <span id="fbad"></span></strong></p>
+                                <p>The sum of the additional deposits <strong>$ <span id="soad"></span></strong> </p>
+                                <p>The total principal (initial balance plus total additional deposits) is <strong>$ <span id="tp"></span></strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xd-6">
+        <div class="resultant_table" style="margin-top:20px;display: none;" id="resultant_table">
+            <div class="conatiner">
+                <div class="card" style="width: 30rem;height: 34rem;overflow-y: scroll;" >
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col">
+                             <p>Balances</p>
+                            </div> 
+                            <div class="col">
+                                <p style="float: right;">Table</p>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Year</th>
+                                    <th scope="col" style="display: none;margin-top: 2%;" id="yr_deposit">Yearly Deposit</th>
+                                    <th scope="col">Principal</th>
+                                    <th scope="col">Yearly Interest</th>
+                                    <th scope="col">Total Interest</th>
+                                    <th scope="col">Total Balance</th>
+                    
+                                  </tr>
+                                </thead>
+                                <tbody id="mytable">
+                                
+                                </tbody>
+                              </table>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xd-6">
+        <div class="visualization" id="visualization" style="display:none; margin-top:20px">
+            <div class="container">
+                <div class="card" style="width: 30rem;">
+                    <div class="card-header">
+                        <p>Visualization</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <p>Representation</p>
+                            </div>
+                            <div class="col visualization_type">
+                                <select id="viz_selection">
+                                    <option id="Pie Chart" value="Pie Chart">Pie Chart</option>
+                                    <option id="Bar Chart" value="Bar Chart" selected>Bar Chart</option>
+                                    <option id="Stacked Bar Chart" value="Stacked Bar Chart">Stacked Bar Chart</option>
+                                    <option id="Line Chart" value="Line Chart">Line Chart</option>
+                                    <!-- <option value="Pie and Bars">Charts</option> -->
+                                </select>
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div  id="svg"></div>
+                        </div>
+                        <div class="row legends" id="DivLegend">
+                            <!-- hello -->
+                         </div>
+                         <div class="button" style="float:right">
+                            <a style="color: white;" id="download" class="buttonDownload">Download</a>
+                        </div>
+                        <div class="row">
+                            <div  id="svg"></div>
+                        </div>
+                        <div class="row legends" id="DivLegend">
+                            <!-- hello -->
+                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div  id="svg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+        <!-- <div class="col-sm-4"> -->
+        <div class="col-sm-4" id="share">  
+          <!-- whatsapp -->
+          <a class="whatsapp watsapp-btn"  target="blank"><i class="fab fa-whatsapp"></i></a>
+          <!-- facebook -->
+          <a class="facebook facebook-btn"  target="blank"><i class="fab fa-facebook-f"></i></a>  
+          <!-- twitter -->
+          <a class="twitter twitter-btn"  target="blank"><i class="fab fa-twitter"></i></a>
+          <!-- linkedin -->
+          <a class="linkedin linkedin-btn" target="blank"><i class="fab fa-linkedin-in"></i></a>     
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">Copy/Paste the following html into your webpage:
+          <textarea cols="50" id="content" style="margin-top: 70px;"><iframe width="100%" height="900vh" src="https://calculators.valuewalk.com/compound-interest-calculator/index.html"></iframe></textarea>
+          <input style="float: left; width: 90px;" type="button" class="example_a" id="copyID" value="Embed" />
+           </div>
+     </div>
+    <div id="footer"></div>
+
+</body>
+<script src="../assets/jquery.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="/assets/sharebuttons.js"></script>
+<script src="../assets/save_as_png.js"></script>
+
+<script src="../assets/Visualization/Bar_Chart/Bar.js"></script>
+<script src="../assets/Visualization/Pie_Chart/Pie.js"></script>
+<script src="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.js"></script>
+<script src="../assets/Visualization/Line_Chart/Line.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+
+    
+</html>

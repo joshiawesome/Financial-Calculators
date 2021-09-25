@@ -1,0 +1,48 @@
+.Bar_rect{
+  fill:#fa8231;
+}
+.Bar_rect:hover {
+  fill: orangered ;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+.xLine path{
+  stroke: #d9d9d9;
+}
+.xLine line{
+  stroke: #d9d9d9;
+}
+.xLine text{
+  fill:#4b6584;
+}
+.yLine path{
+  stroke: #d9d9d9;
+}
+.yLine line{
+  stroke: #d9d9d9;
+}
+.yLine text{
+  fill:#4b6584;
+}

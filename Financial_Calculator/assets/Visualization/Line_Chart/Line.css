@@ -1,0 +1,70 @@
+.xLines path{
+  stroke: #d9d9d9;
+}
+.xLines line{
+  stroke: #d9d9d9;
+}
+.xLines text{
+  fill:#4b6584;
+}
+.yLines path{
+  stroke: #d9d9d9;
+}
+.yLines line{
+  stroke: #d9d9d9;
+}
+.yLines text{
+  fill:#4b6584;
+}
+.legend{
+  font-size:10px;
+  font-weight: bold;
+
+  /*margin-left: 10px;*/
+  padding: 15px;
+  margin-left: 10px;
+  text-anchor: end;
+  
+}
+.line {
+  fill: none;
+  stroke-width: 3px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.hover-line {
+  stroke: #2C3A47;
+  stroke-width: 2px;
+  stroke-dasharray: 3,3;
+}
+.d3-tip-line {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+.d3-tip-line:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+.d3-tip-line.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+.points{
+  background-color: aqua;
+}

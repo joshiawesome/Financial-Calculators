@@ -1,0 +1,21 @@
+input{
+ 
+    clear: both;
+    background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 160px;
+    color: black;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.btn-center{
+    margin-left: 275px;
+}
+@media(max-width:600px){
+    .btn-center{
+        margin-left: 50%;
+    }
+
+}

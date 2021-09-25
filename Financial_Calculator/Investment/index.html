@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="../assets/Visualization/Bar_Chart/Bar.css">
+    <link rel="stylesheet" href="../assets/Visualization/Pie_Chart/Pie.css">
+    <link rel="stylesheet" href="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.css">
+    <link rel="stylesheet" href="../assets/Visualization/Line_Chart/Line.css">
+    <link rel="stylesheet" href="../assets/css/sharebuttons.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+    <button onclick="location.href='../'" class="btn btn-info" style="position: fixed;right:0px">Back To Calculators</button>
+    <h2 style="background-color: #FA8231;padding:5px;color:white;">Investment Calculator</h2>
+
+  <div class="row">
+    <div class="col">
+        <div class="container" style="margin-top: 100px;">
+            <div class="card" style="width: 30rem;height: 4rem;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>I would like to know...</p> 
+                        </div>
+                        <div class="col">
+                            <select onchange="to_know()" style="float: right;margin-right: 10px;" id="to_know_investment">
+                                <option value="final_balance">final balance</option>
+                                <option value="initial_investment">initial investment</option>
+                                <option value="rate_of_return">rate of return</option>
+                                <option value="periodic_contribution">periodic contribution</option>
+                                <option value="time_of_length">time of length</option>
+                              </select>   
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xd-4" >
+                    <div class="container">
+                        <div class="card card_main" style="width: 30rem;margin-top: 20px;">
+                            <div class="card-header">
+                                Main Investment
+                            </div>
+                            <div class="card-body">
+                                <div id="sdb" style="display: none;">
+                                    <div class="row">
+                                        <div class="col">
+                                            Desired Balance
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" value="200000" style="direction: rtl;float: right;" id="desired_balance_input_value">
+                                        </div>
+                                        <span style="margin-right: 10px;">$</span>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div id="sii">
+                                    <div class="row">
+                                        <div class="col">
+                                            Initial Investment
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" value="10000" style="direction: rtl;float: right;" id="initial_investment_input_value">
+                                        </div>
+                                        <span style="margin-right: 10px;">$</span>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div id="srr">
+                                    <div class="row">
+                                       <div class="col">
+                                           Rate of Return
+                                       </div>
+                                       <div class="col">
+                                           <input type="text" value="5" style="direction: rtl;float: right;" id="rate_of_return_input_value">
+                                       </div>
+                                       <span style="margin-right: 10px;">%</span>
+                                   </div>
+                                   <hr>
+                                </div>
+                                <div id="st">
+                                    <div class="row">
+                                        <div class="col">
+                                           Term
+                                        </div>
+                                        <span id="tsy"><input type="text"  value="10" style="direction: rtl;float: right;margin-left: 105px;" id="term_year_input_value"></span>
+                                        <span id="tsm" style="display: none;"><input type="text"  value="120" style="direction: rtl;float: right;margin-left: 105px;" id="term_month_input_value"></span>
+
+                                        <div class="col">
+                                            <select name="" id="ym" style="float: right;" onchange="select_month_year()">
+                                                <option value="year">year</option>
+                                                <option value="month">month</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div id="scf">
+                                    <div class="row">
+                                        <div class="col">
+                                           Compunding Frequency
+                                        </div>
+                                        <div class="col">
+                                            <select name="" id="cf_input_value" style="float: right;">
+                                                <option value="yearly">yearly</option>
+                                                <option value="semi_annualy">semi-annualy</option>
+                                                <option value="quartely">quartely</option>
+                                                <option value="monthly">monthly</option>
+                                                <option value="weekly">weekly</option>
+                                                <option value="daily">daily</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div id="sair">
+                                    <div class="row">
+                                        <div class="col">
+                                          Annual Inflation Rate
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" value="0" style="direction: rtl;float: right;" id="annual_fr_input_value">
+                                        </div>
+                                        <span style="margin-right: 10px;">%</span>
+                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xd-4" id="Desc">
+                    <div class="hello">
+                        <div class="container" style="margin-top: -62px;">
+                            <div class="card"  style="width: 30rem;display:block;" id="show_description" >
+                                <div class="card-header">
+                                    How it works?
+                                </div>
+                                <div class="card-body">
+                                    <div class="description_display" id="description_display">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xd-4">
+                    <div class="hello">
+                        <div class="container" style="margin-top:10px; margin-right: -10px;">
+                           <div class="card" style="width: 30rem;display: none;" id="show_result__">
+                               <div class="card-header">
+                                   Result
+                               </div>
+                               <div class="card-body">
+                                   
+                                   <div id="card_body_display">
+                                       <div id="show_final_balance" style="display: none;">
+                                           <p>Your <strong>final balance </strong>will be <strong>$<span id="show_final_balance_"></span></strong> </p>
+                                           <p>Thus, you earn <strong> $<span id="show_final_balance_intrest"></span> intrest </strong> </p>     
+                                       </div>
+                                       <div id="show_initial_investment">
+                                           <p>Your <strong> initial deposit </strong> needs to be <strong> $<span id="show_initial_investment_"></span></strong> to reach the desired balance</p>
+                                           <p>Thus, you earn <strong> $<span id="show_initial_investment_intrest"></span> intrest </strong> on your investment</p>
+                                       </div>
+                                       <div id="show_time_of_length">
+                                           <p>You will reach the desired balance after <strong> <span id="show_time_of_length_year"></span> years <span id="show_time_of_length_month"></span> </strong></p>
+                                           <p>Thus, you earn <strong> $<span id="show_time_of_length_intrest"></span></strong> interest on your investment.</p>
+                                       </div>
+       
+                                       <div id="show_rate_of_return">
+                                           <p>You need to find an investment with at least a <strong> <span id="show_rate_of_return_"></span> %</strong> annual rate of return to reach the desired balance.</p>
+                                            <p>Thus, you earn $ <strong> <span id="show_rate_of_return_intrest"></span> </strong> interest on your investment.</p>   
+                                       </div>
+                                   </div>
+                                   <div id="pc_never">
+                                       Your must set regularity if you would like to estimate your periodic contribution.
+                                   </div>
+                                   <div id="card_body_annual_rate">
+                                       <div id="annual_final_result_loss">
+                                           <p>Your final balance will be $<span id="afrl"></span>, which is $<span id="afrl_loss"></span>, after adjusting for inflation.</p>
+                                           <p>Thus, over a nominal term, you make $<span id="afrl_intrest"></span> interest on your investment, which does not cover the purchasing power loss caused by inflation. It means that if you take inflation into account, you have lost $<span id="aflrloss"></span> on your investment.</p>
+   
+                                       </div>
+                                       <div id="annual_final_result_gain">
+                                           <p>Your final balance will be $<span id="afrg"></span>, which is $<span id="afrgain"></span>, after adjusting for inflation.</p>
+                                           <p>Thus, over a nominal term, you earn $<span id="afrgintrest"></span> interest on your investment, which is $<span id="afrintrestgain"></span> in a real, inflation-adjusted term.</p>
+   
+                                       </div>
+                                       <div id="annual_final_result_equal">
+                                           <p>Your final balance will be $<span id="afrwf"></span>, which is $<span id="afrwwh"></span>, after adjusting for inflation.</p>
+                                           <p>Thus, over a nominal term, you earn $<span id="afreintrest"></span> interest on your investment, which is $0 in a real, inflation-adjusted term.</p>
+                                           
+                                       </div>
+                                   </div>
+   
+                                   <div id="card_body_initial_rate">
+                                       <div id="annual_initial_result_loss">
+                                           <p>Your initial deposit needs to be $<span id="irid"></span> to reach the desired inflation-adjusted balance.</p>
+                                           <p>The nominal value (without adjusting for inflation) of your final balance is $<span id="irfb"></span></p>
+                                           <p>Thus, over a nominal term, you make $<span id="ibrintrest"></span> interest on your investment, which does not cover the purchasing power loss caused by inflation. It means that if you take inflation into account, you have lost $<span id="int"></span> on your investment.</p>
+                                       </div>
+   
+                                       <div id="annual_initial_result_equal">
+                                           <p>Your initial deposit needs to be $<span id="aireq"></span> to reach the desired inflation-adjusted balance.</p>
+                                           <p>The nominal value (without adjusting for inflation) of your final balance is $<span id="airfinal"></span>.</p>
+                                           <p>interest on your investment, which is $0 in a real, inflation-adjusted term.</p>
+   
+                                       </div>
+                                       <div id="annual_result_gain">
+                                           <p>Your initial deposit needs to be $<span id="argid"></span> to reach the desired inflation-adjusted balance.</p>
+                                           <p>The nominal value (without adjusting for inflation) of your final balance is $<span id="anrtb"></span>.</p>
+                                           <p>Thus, over a nominal term, you earn $<span id="argintrest"></span> interest on your investment, which is $<span id="arminus"></span> in a real, inflation-adjusted term.</p>
+   
+                                       </div>
+   
+                                   </div>
+   
+                                   <div id="card_body_rate_of_return">
+                                       <div id="body_rate_of_return_">
+                                           <p>You need to find an investment with at least a  <span id="rorpercent"></span> % annual rate of return to reach the desired balance.</p>
+                                           <p>The nominal value (without adjusting for inflation) of your final balance is $<span id="rorfinal_balance"></span>.</p>
+                                           <p>Thus, over a nominal term, you earn $<span id="h_a_"></span> interest on your investment, which is $1,90,000 in a real, inflation-adjusted term.</p>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+         
+         <div class="row">
+             <!-- <div class="col-xd-6"> -->
+                 <div class="container">
+                     <div class="card card_contribution" style="width: 30rem;margin-top: 20px;">
+                         <div class="card-header">
+                             Additional Contribution
+                         </div>
+                         <div class="card-body">
+                             <div style="display: none;" id="ac_one">
+                                 <div class="row">
+                                     <div class="col">
+                                         How much ?
+                                     </div>
+                                     <div class="col">
+                                         <input type="text" value="1000"  style="float: right;direction: rtl;" id="ad_amount">
+                                     </div>
+                                     <span style="margin-right: 16px;">$</span>
+                                 </div>
+                                 <hr>
+                             </div>
+                             <div class="row">
+                                 <div class="col">
+                                     How often ?
+                                 </div>
+                                 <div class="col">
+                                     <select style="float: right;" onchange="additional_contribution_select()" id="ac_select">
+                                         <option value="never">never</option>
+                                         <option value="yearly">yearly</option>
+                                         <option value="monthly">monthly</option>
+                                         <option value="semi_annualy">semi-annualy</option>
+                                         <option value="quartely">quartely</option>
+                                         <option value="weekly">weekly</option>
+                                         <!-- <option value="bi-weekly">bi-weekly</option> -->
+                                         <option value="daily">daily</option>
+                                       </select>   
+         
+                                 </div>
+                             </div>
+                             <hr>
+                             <div style="display: none;" id="ad_two">
+                                 <div class="row">
+                                     <div class="col">
+                                         When ?
+                                     </div>
+                                     <div class="col">
+                                         <select style="float: right;">
+                                             <option value="daily">begining of period</option>
+                                             <option value="daily">end of period</option>
+                                           </select>   
+                                     </div>
+                                 </div>
+                                 <hr>
+                                 <div id="disable_for_time_length">
+                                     <div class="row">
+                                         <div class="col">
+                                             Annual Growth Rate
+                                         </div>
+                                         <div class="col">
+                                             <input type="text" value="0"  style="float: right;direction: rtl;" id="annual_growth_rate_calc">
+                                         </div>
+                                         <span style="margin-right: 20px;">%</span>
+                                     </div>
+                                 </div>
+                             </div>
+                           
+                         </div>
+                     </div>
+                     <a href="#" class="btn" style="background-color: #FA8231;color: white;margin-left: 150px;" onclick="calc_investment()">Calculate</a>
+                     <div class="row">
+                         <div class="col-sm-6">
+                             <div class="resultant_table" style="margin-top:20px;display: none;" id="resultant_table">
+                                 <div class="conatiner">
+                                     <div class="card" style="width: 30rem;height: 34rem;overflow-y: scroll;" >
+                                         <div class="card-header">
+                                             <div class="row">
+                                                 <div class="col">
+                                                  <p>Representation</p>
+                                                 </div> 
+                                                 <div class="col">
+                                                     <p style="float: right;">Table</p>
+                                                 </div>
+                         
+                                             </div>
+                                         </div>
+                                         <div class="card-body">
+                                             <div class="table-responsive">
+                                                 <table class="table table-striped">
+                                                     <thead>
+                                                       <tr>
+                                                         <th scope="col">Year</th>
+                                                         <th scope="col" id="syc">Yearly Contribution</th>
+                                                         <th scope="col">Principal</th>
+                                                         <th scope="col">Yearly Interest</th>
+                                                         <th scope="col">Total Interest</th>
+                                                         <th scope="col">Total Balance</th>
+                                         
+                                                       </tr>
+                                                     </thead>
+                                                     <tbody id="mytable">
+                                                     
+                                                     </tbody>
+                                                   </table>
+                                             </div>
+                         
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-xd-6">
+                             <div class="visualization" id="visualization" style="display:none; margin-top:20px;">
+                                 <div class="container">
+                                     <div class="card" style="width: 30rem;">
+                                         <div class="card-header">
+                                             <p>Visualization</p>
+                                         </div>
+                                         <div class="card-body">
+                                             <div class="row">
+                                                 <div class="col">
+                                                     <p>Representation</p>
+                                                 </div>
+                                                 <div class="col visualization_type">
+                                                     <select id="viz_selection">
+                                                         <option id="Pie Chart" value="Pie Chart">Pie Chart</option>
+                                                         <option id="Bar Chart" value="Bar Chart" selected>Bar Chart</option>
+                                                         <option id="Stacked Bar Chart" value="Stacked Bar Chart">Stacked Bar Chart</option>
+                                                         <option id="Line Chart" value="Line Chart">Line Chart</option>
+                                                         <!-- <option value="Pie and Bars">Charts</option> -->
+                                                     </select>
+                                                  </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div  id="svg"></div>
+                                             </div>
+                                             <div class="row legends" id="DivLegend">
+                                                <!-- hello -->
+                                             </div>
+                                             <div class="button" style="float:right">
+                                                <a style="color: white;" id="download" class="buttonDownload">Download</a>
+                                            </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div  id="svg"></div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             <!-- </div> -->
+        </div>
+
+    </div>
+</div>
+
+
+    <div class="row">
+        <!-- <div class="col-sm-4"> -->
+        <div class="col-sm-4" id="share">  
+          <!-- whatsapp -->
+          <a class="whatsapp watsapp-btn"  target="blank"><i class="fab fa-whatsapp"></i></a>
+          <!-- facebook -->
+          <a class="facebook facebook-btn"  target="blank"><i class="fab fa-facebook-f"></i></a>  
+          <!-- twitter -->
+          <a class="twitter twitter-btn"  target="blank"><i class="fab fa-twitter"></i></a>
+          <!-- linkedin -->
+          <a class="linkedin linkedin-btn" target="blank"><i class="fab fa-linkedin-in"></i></a>     
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">Copy/Paste the following html into your webpage:
+          <textarea cols="50" id="content" style="margin-top: 70px;"><iframe width="100%" height="900vh" src="https://calculators.valuewalk.com/Investment/index.html"></iframe></textarea>
+          <input style="float: left; width: 90px;" type="button" class="example_a" id="copyID" value="Embed" />
+          <!-- <a class="embedly-button" href="http://embed.ly/code" data-theme="light-flat" data-url="https://calculators.valuewalk.com/Investment/index.html">Embed</a> -->
+        </div>
+     </div>
+  
+    <div id="footer"></div>
+    
+</body>
+
+<script src="../assets/jquery.js"></script>
+<script src="../assets/Visualization/Bar_Chart/Bar.js"></script>
+<script src="../assets/Visualization/Pie_Chart/Pie.js"></script>
+<script src="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.js"></script>
+<script src="../assets/Visualization/Line_Chart/Line.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.js"></script>-->
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script src="//cdn.embedly.com/widgets/platform.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+<script>
+      $.get('../Descriptions/Investment.txt', function(data){
+        console.log(data);
+        document.getElementById("description_display").innerHTML=data;
+    })
+    </script>
+
+
+<script src="assets/js/script.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="/assets/sharebuttons.js"></script>
+<script src="../assets/save_as_png.js"></script>
+
+<script src="../assets/Visualization/Bar_Chart/Bar.js"></script>
+<script src="../assets/Visualization/Pie_Chart/Pie.js"></script>
+<script src="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.js"></script>
+<script src="../assets/Visualization/Line_Chart/Line.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+</html>

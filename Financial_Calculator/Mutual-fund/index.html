@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="../assets/Visualization/Bar_Chart/Bar.css">
+    <link rel="stylesheet" href="../assets/Visualization/Pie_Chart/Pie.css">
+    <link rel="stylesheet" href="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.css">
+    <link rel="stylesheet" href="../assets/Visualization/Line_Chart/Line.css">
+    <link rel="stylesheet" href="../assets/css/sharebuttons.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+<body>
+    <button onclick="location.href='../'" class="btn btn-info" style="position: fixed;right:0px">Back To Calculators</button>
+    <h2 style="background-color: #FA8231;padding:5px;color:white;">Mutual Funds Calculator</h2>
+ 
+  <div class="move">
+    <div class="container">
+        <div class="row">
+            <div class="col-xd-6">
+            <div class="card" style="width: 30rem; margin-top: 100px;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            Investment from
+                        </div>
+                        <div class="col">
+                            <select name="" id="option_based" onchange="select_option()">
+                                <option value="one">One-time Investment Plan</option>
+                                <option value="sys">Systamatic Investment Plan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <div id="enable_investment">
+                                Investment Amount
+                            </div>
+                            <div style="display: none;" id="enable_monthly_investment">
+                                Monthly Investment
+                            </div>
+                        </div>
+                        <div class="col">
+                            <input type="text" value="15000" style="float: right;direction: rtl;" id="i_amount"> 
+                        </div>
+                        <span>$</span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            Expected Annual Return
+                        </div>
+                        <div class="col">
+                            <input type="text" value="50" style="float: right;direction: rtl;" id="a_return">
+                        </div>
+                        <span>%</span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            Investment Period
+                        </div>
+                        <div class="col">
+                            <div id="year_select">
+                                <input type="text" value="1" style="float: right;direction: rtl;" id="y">
+                            </div>
+                            <div id="month_select" style="display: none;">
+                                <input type="text" value="12" style="float: right;direction: rtl;" id="m">
+                            </div>
+                        </div>
+                        <span>
+                            <select name="" id="select_year_month" onchange="select_yrmnth()">
+                                <option value="year">Years</option>
+                                <option value="month">Months</option>
+
+                            </select>
+                        </span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            Investment at maturity
+                        </div>
+                        <div class="col">
+                            <span style="float: right;">$</span>
+                            <span style="float: right;margin-right: 10px;" id="answer_one"></span>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>  
+            </div>  
+            <div class="col-sm-6" id="Desc">
+                <!-- <div class="col-xd-4" id="Desc"> -->
+                    <div class="hello">
+                        <div class="container" style="margin-top: 100px; margin-right: -150px;" >
+                            <div class="card"  style="width: 30rem;display:block;" id="show_description" >
+                                <div class="card-header">
+                                    How it works?
+                                </div>
+                                <div class="card-body">
+                                    <div class="description_display" id="description_display">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+    </div>      
+            <a href="#" class="btn" style="background-color: #FA8231;color: white;margin-left: 150px;" onclick="calc()">Calculate</a>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="visualization vis__" id="visualization" style="display:none; margin-top:20px;">
+                        <div class="container">
+                            <div class="card" style="width: 30rem;">
+                                <div class="card-header">
+                                    <p>Visualization</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>Representation</p>
+                                        </div>
+                                        <div class="col visualization_type">
+                                            <select id="viz_selection">
+                                                <option id="Pie Chart" value="Pie Chart" selected>Pie Chart</option>
+                                            </select>
+                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div  id="svg"></div>
+                                    </div>
+                                    <div class="row legends" id="DivLegend">
+                                    </div>
+                                    <div class="button" style="float:right">
+                                        <a style="color: white;" id="download" class="buttonDownload">Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div  id="svg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- <div class="btn-center"> -->
+    <!-- </div> -->
+</div>
+      
+
+    <div class="row">
+        <!-- <div class="col-sm-4"> -->
+        <div class="col-sm-4" id="share">  
+          <!-- whatsapp -->
+          <a class="whatsapp watsapp-btn"  target="blank"><i class="fab fa-whatsapp"></i></a>
+          <!-- facebook -->
+          <a class="facebook facebook-btn"  target="blank"><i class="fab fa-facebook-f"></i></a>  
+          <!-- twitter -->
+          <a class="twitter twitter-btn"  target="blank"><i class="fab fa-twitter"></i></a>
+          <!-- linkedin -->
+          <a class="linkedin linkedin-btn" target="blank"><i class="fab fa-linkedin-in"></i></a>     
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">Copy/Paste the following html into your webpage:
+          <textarea cols="50" id="content" style="margin-top: 70px;"><iframe width="100%" height="900vh" src="https://calculators.valuewalk.com/Mutual-fund/index.html"></iframe></textarea>
+          <input style="float: left; width: 90px;" type="button" id="copyID" class="example_a" value="Embed" />
+          <!-- <a class="embedly-button" href="http://embed.ly/code" data-theme="light-flat" data-url="https://calculators.valuewalk.com/Mutual-fund/index.html">Embed</a> -->
+        </div>
+     </div>
+    <div id="footer"></div>
+            
+    
+</body>
+<script src="../assets/jquery.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="/assets/sharebuttons.js"></script>
+<script src="../assets/save_as_png.js"></script>
+
+<script src="../assets/Visualization/Bar_Chart/Bar.js"></script>
+<script src="../assets/Visualization/Pie_Chart/Pie.js"></script>
+<script src="../assets/Visualization/Stacked_Bar_Chart/Stack_Bar.js"></script>
+<script src="../assets/Visualization/Line_Chart/Line.js"></script>
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+</html>

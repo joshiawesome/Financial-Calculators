@@ -1,0 +1,64 @@
+body{
+    overflow-x: hidden;
+}
+select{
+    background-color: transparent;
+    border: 0px solid;
+}
+select:focus{
+    outline: none;
+}
+input{
+ 
+    clear: both;
+    background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 160px;
+    color: black;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.hello{
+    margin-left: 60px;
+}
+@media(max-width:1300px){
+    .hello{
+        margin-left: 0px;
+    }   
+}
+/* .btn-center{
+    margin-left: 20%;
+} */
+
+.visualization_type select{
+    float: right;
+    margin-right: -5%;
+    width: auto;
+    background-color: transparent;
+    border: 0px solid;
+}
+
+.card_main{
+    /* margin-left: 16.5%; */
+}
+
+.resultant_table{
+    /* margin-left: 18%; */
+}
+/* @media(max-width:600px){
+    .card_main{
+        margin-left: 0;
+
+    }
+    .card_contribution{
+        margin-left: 4%;
+    }
+    .resultant_table{
+        margin-left: 4%;
+    }
+    .btn-center{
+        margin-left: 50%;
+    }
+} */
